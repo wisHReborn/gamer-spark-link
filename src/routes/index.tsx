@@ -11,9 +11,9 @@ import heroBg from "@/assets/hero-bg.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "HEROO — Streamer Hub & Donation" },
-      { name: "description", content: "ศูนย์รวมลิงก์และช่องทางสนับสนุนของสตรีมเมอร์ HEROO — โดเนท, โซเชียล, สเปคเครื่อง และคอมมูนิตี้" },
-      { property: "og:title", content: "HEROO — Streamer Hub" },
+      { title: "PREEE REBORN — Streamer Hub & Donation" },
+      { name: "description", content: "ศูนย์รวมลิงก์และช่องทางสนับสนุนของสตรีมเมอร์ PREEE REBORN — โดเนท, โซเชียล, สเปคเครื่อง และคอมมูนิตี้" },
+      { property: "og:title", content: "PREEE REBORN — Streamer Hub" },
       { property: "og:description", content: "Support the stream. Join the squad." },
       { property: "og:type", content: "website" },
     ],
@@ -67,11 +67,11 @@ const donateOptions = [
 ];
 
 const socials = [
-  { name: "Twitch", handle: "@heroo_live", url: "https://twitch.tv", Icon: Twitch, color: "oklch(0.55 0.22 295)" },
-  { name: "YouTube", handle: "HEROO Gaming", url: "https://youtube.com", Icon: Youtube, color: "oklch(0.62 0.24 27)" },
-  { name: "Facebook", handle: "HEROO Page", url: "https://facebook.com", Icon: Facebook, color: "oklch(0.55 0.18 255)" },
-  { name: "TikTok", handle: "@heroo.tk", url: "https://tiktok.com", Icon: Music2, color: "oklch(0.97 0.01 80)" },
-  { name: "Discord", handle: "HEROO Guild", url: "https://discord.gg", Icon: MessageCircle, color: "oklch(0.6 0.18 270)" },
+  { name: "Twitch", handle: "@preeereborn_live", url: "https://twitch.tv", Icon: Twitch, color: "oklch(0.55 0.22 295)" },
+  { name: "YouTube", handle: "PREEE REBORN Gaming", url: "https://youtube.com", Icon: Youtube, color: "oklch(0.62 0.24 27)" },
+  { name: "Facebook", handle: "PREEE REBORN Page", url: "https://facebook.com", Icon: Facebook, color: "oklch(0.55 0.18 255)" },
+  { name: "TikTok", handle: "@preeereborn.tk", url: "https://tiktok.com", Icon: Music2, color: "oklch(0.97 0.01 80)" },
+  { name: "Discord", handle: "PREEE REBORN Guild", url: "https://discord.gg", Icon: MessageCircle, color: "oklch(0.6 0.18 270)" },
 ];
 
 const gear = [
@@ -118,7 +118,7 @@ function Index() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 h-16 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-2 font-display font-black text-xl">
             <Zap className="size-5 text-primary" fill="currentColor" />
-            <span className="text-glow-primary">HEROO</span>
+            <span className="text-glow-primary">PREEE REBORN</span>
           </a>
 
           <nav className="hidden md:flex items-center gap-1">
@@ -187,7 +187,7 @@ function Index() {
             <div className="absolute -inset-2 rounded-full bg-gradient-primary blur-2xl opacity-60" />
             <img
               src={avatar}
-              alt="HEROO avatar"
+              alt="Preee Reborn avatar"
               width={160}
               height={160}
               className="relative size-32 sm:size-40 rounded-full object-cover border-4 border-primary shadow-glow"
@@ -200,7 +200,7 @@ function Index() {
 
           <h1 className="mt-8 font-display font-black text-5xl sm:text-7xl tracking-tight">
             <span className="bg-gradient-primary bg-clip-text text-transparent text-glow-primary">
-              HEROO
+              PREEE REBORN
             </span>
           </h1>
           <p className="mt-4 text-sm sm:text-base text-muted-foreground max-w-md mx-auto">
@@ -313,7 +313,7 @@ function Index() {
           <div className="absolute inset-0 opacity-20" style={{ background: "var(--gradient-primary)" }} />
           <div className="relative">
             <Users className="size-12 text-primary mx-auto" />
-            <div className="mt-4 font-display font-black text-3xl">HEROO GUILD</div>
+            <div className="mt-4 font-display font-black text-3xl">PREEE REBORN GUILD</div>
             <p className="mt-2 text-muted-foreground max-w-md mx-auto">
               {lang === "th"
                 ? "พบกับเพื่อนเกมเมอร์กว่า 5,000+ คนที่พร้อมตีบอส, จัดปาร์ตี้, และแชร์เคล็ดลับเกมด้วยกัน"
@@ -333,9 +333,9 @@ function Index() {
       </Section>
 
       <footer className="border-t border-border mt-12 py-8 text-center text-sm text-muted-foreground">
-        <div className="font-display font-black text-primary text-glow-primary">HEROO</div>
+        <div className="font-display font-black text-primary text-glow-primary">PREEE REBORN</div>
         <p className="mt-2">{L.footer}</p>
-        <p className="mt-1 text-xs opacity-60">© {new Date().getFullYear()} HEROO. All rights reserved.</p>
+        <p className="mt-1 text-xs opacity-60">© {new Date().getFullYear()} PREEE REBORN. All rights reserved.</p>
       </footer>
     </div>
   );

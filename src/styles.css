@@ -1,7 +1,7 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;800&family=Orbitron:wght@600;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;800&family=Orbitron:wght@600;800;900&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -32,7 +32,7 @@
   --color-cta: var(--cta);
   --color-cta-foreground: var(--cta-foreground);
   --font-display: 'Orbitron', sans-serif;
-  --font-sans: 'Noto Sans Thai', system-ui, sans-serif;
+  --font-sans: 'Kanit', sans-serif;
 }
 
 :root {
