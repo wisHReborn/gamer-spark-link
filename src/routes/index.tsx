@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Heart, Instagram, Youtube, Facebook, MessageCircle,
   Music2, Cpu, MonitorPlay, Keyboard, Mouse, Headphones,
-  Users, Menu, X, Zap, Languages,
+  Users, Menu, X, Zap, Languages, Volume2, VolumeX
 } from "lucide-react";
 import profile from "@/assets/profile.png";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -25,7 +25,7 @@ type Lang = "th" | "en";
 
 const t = {
   th: {
-    nav: { support: "สนับสนุน", links: "ลิงก์", gear: "อุปกรณ์", community: "คอมมูนิตี้" },
+    nav: { support: "สนับสนุน", links: "ช่องทาง", gear: "อุปกรณ์", community: "คอมมูนิตี้" },
     live: "LIVE",
     bio: "นักรบดิจิทัล • สตรีมเมอร์ • คอนเทนต์เกม FPS / MMORPG",
     heroCta: "โดเนทเดี๋ยวนี้",
@@ -87,6 +87,8 @@ function Index() {
   const [lang, setLang] = useState<Lang>("th");
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const L = t[lang];
 
   useEffect(() => {
@@ -94,6 +96,17 @@ function Index() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const toggleMusic = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch(e => console.log("Audio play prevented:", e));
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   const navItems = [
     { id: "support", label: L.nav.support },
@@ -118,7 +131,28 @@ function Index() {
   };
 
   return (
-    <div className="min-h-screen text-foreground selection:bg-primary/30 font-sans">
+    <div className="min-h-screen text-foreground selection:bg-primary/30 font-sans relative">
+      {/* Hidden Audio Player */}
+      <audio
+        ref={audioRef}
+        src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3"
+        loop
+        preload="auto"
+      />
+
+      {/* Floating Music Button */}
+      <button
+        onClick={toggleMusic}
+        className="fixed bottom-6 right-6 z-50 p-4 rounded-full bg-primary/90 text-primary-foreground shadow-glow backdrop-blur-sm hover:scale-110 active:scale-95 transition-all animate-float border border-white/20"
+        aria-label="Toggle Background Music"
+      >
+        {isPlaying ? (
+          <Volume2 className="size-6" />
+        ) : (
+          <VolumeX className="size-6 opacity-80" />
+        )}
+      </button>
+
       {/* NAV */}
       <header
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
