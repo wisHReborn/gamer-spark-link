@@ -294,83 +294,108 @@ export default function Index() {
 
       {/* SUPPORT */}
       <Section id="support" eyebrow="01" title={L.supportTitle} subtitle={L.supportSub} className="bg-theme-support relative">
-        <div className="max-w-3xl mx-auto">
-          <a
-            href="https://easydonate.app/PREEEREBORN"
-            target="_blank"
-            rel="noreferrer"
-            className="group relative overflow-hidden rounded-[2rem] p-10 bg-gradient-cta text-cta-foreground border-cta shadow-cta transition-all active:scale-95 flex flex-col sm:flex-row items-center justify-between gap-8 animate-pulse-glow"
-          >
-            <div className="text-center sm:text-left">
-              <div className="text-[12px] font-black uppercase tracking-[0.4em] mb-3 opacity-80">
-                ★ Ultimate Support
-              </div>
-              <div className="font-display text-4xl sm:text-5xl font-black tracking-tighter">
-                easydonate
-              </div>
-              <p className="text-lg mt-4 font-medium opacity-90">
-                รองรับทุกช่องทาง PromptPay / TrueMoney / Credit Card
-              </p>
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-card/50 p-6 sm:p-10 md:p-14 shadow-2xl backdrop-blur-md animate-float">
+          <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-primary via-transparent to-orange-400 animate-pulse" />
+          
+          <div className="relative z-10 max-w-3xl mx-auto">
+            {/* Decorative Header */}
+            <div className="text-center mb-10 animate-slide-up">
+              <h3 className="font-display text-xl sm:text-3xl font-black tracking-tight mb-4 bg-gradient-to-r from-primary to-orange-300 bg-clip-text text-transparent">
+                {lang === "th" ? "สามารถสนับสนุนเราได้ที่นี่" : "You can support us here"}
+              </h3>
+              
             </div>
-            <div className="grid place-items-center size-20 sm:size-24 rounded-3xl bg-white/20 group-hover:scale-110 transition-transform shadow-2xl shrink-0">
-              <Heart className="size-10 sm:size-12 animate-pulse-subtle" fill="currentColor" />
-            </div>
-          </a>
+
+            <a
+              href="https://easydonate.app/PREEEREBORN"
+              target="_blank"
+              rel="noreferrer"
+              className="group relative overflow-hidden rounded-[2rem] p-8 bg-gradient-cta text-cta-foreground border-cta shadow-cta transition-all active:scale-95 flex flex-col sm:flex-row items-center justify-between gap-6 animate-pulse-glow"
+            >
+              <div className="text-center sm:text-left">
+                <div className="text-[10px] font-black uppercase tracking-[0.3em] mb-3 opacity-80 flex items-center gap-2 justify-center sm:justify-start">
+                  <Zap className="size-3.5 fill-current" />
+                  Ultimate Support
+                </div>
+                <div className="font-display text-4xl sm:text-5xl font-black tracking-tighter group-hover:scale-[1.02] transition-transform duration-500">
+                  easydonate
+                </div>
+                <p className="text-base sm:text-lg mt-4 font-medium opacity-90 leading-relaxed">
+                  {lang === "th" 
+                    ? "สนับสนุนผ่าน PromptPay / TrueMoney / Credit Card"
+                    : "Support via PromptPay / TrueMoney / Credit Card"}
+                </p>
+              </div>
+              <div className="grid place-items-center size-20 sm:size-24 rounded-2xl bg-white/20 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 shadow-2xl shrink-0">
+                <Heart className="size-10 sm:size-12 animate-pulse-subtle" fill="currentColor" />
+              </div>
+            </a>
+
+            <p className="mt-8 text-center text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/50">
+              Thank you for your support
+            </p>
+          </div>
         </div>
       </Section>
 
       {/* LINKS */}
       <Section id="links" eyebrow="02" title={L.linksTitle} subtitle={L.linksSub} className="bg-theme-links relative">
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:gap-6">
-          {socials.map(({ name, handle, url, Icon, color }, i) => (
-            <a
-              key={name}
-              href={url}
-              target="_blank"
-              rel="noreferrer"
-              className={`group flex items-center gap-5 bg-card border border-border hover:border-primary/50 rounded-2xl p-6 transition-all active:scale-[0.98] hover:shadow-2xl hover:translate-y-[-2px] ${i % 2 !== 0 ? 'animate-float-slow' : 'animate-float-delayed'}`}
-            >
-              <div
-                className="grid place-items-center size-16 rounded-2xl shrink-0 shadow-inner group-hover:scale-105 transition-transform"
-                style={{ backgroundColor: `color-mix(in oklab, ${color} 15%, transparent)`, color }}
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-card/50 p-6 sm:p-12 shadow-2xl backdrop-blur-md animate-float-slow">
+          <div className="absolute inset-0 opacity-10 bg-gradient-to-tr from-cta via-transparent to-primary animate-pulse" />
+          <div className="relative z-10 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:gap-6">
+            {socials.map(({ name, handle, url, Icon, color }, i) => (
+              <a
+                key={name}
+                href={url}
+                target="_blank"
+                rel="noreferrer"
+                className={`group flex items-center gap-5 bg-card/80 border border-border hover:border-primary/50 rounded-2xl p-6 transition-all active:scale-[0.98] hover:shadow-2xl hover:translate-y-[-2px] ${i % 2 !== 0 ? 'animate-float-slow' : 'animate-float-delayed'}`}
               >
-                <Icon className="size-8" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="font-bold text-xl leading-none font-sans">{name}</div>
-                <div className="text-sm sm:text-base text-muted-foreground mt-2 truncate font-medium font-sans">{handle}</div>
-              </div>
-              <span className="text-primary font-display font-black translate-x-[-10px] opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-xl">
-                →
-              </span>
-            </a>
-          ))}
+                <div
+                  className="grid place-items-center size-16 rounded-2xl shrink-0 shadow-inner group-hover:scale-105 transition-transform"
+                  style={{ backgroundColor: `color-mix(in oklab, ${color} 15%, transparent)`, color }}
+                >
+                  <Icon className="size-8" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="font-bold text-xl leading-none font-sans">{name}</div>
+                  <div className="text-sm sm:text-base text-muted-foreground mt-2 truncate font-medium font-sans">{handle}</div>
+                </div>
+                <span className="text-primary font-display font-black translate-x-[-10px] opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-xl">
+                  →
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </Section>
 
       {/* GEAR */}
       <Section id="gear" eyebrow="03" title={L.gearTitle} subtitle={L.gearSub} className="bg-theme-gear relative">
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {gearItems.map(({ Icon, label, value }, i) => (
-            <div
-              key={label}
-              className={`relative bg-card border border-border rounded-2xl p-7 hover:border-primary/50 transition-all group overflow-hidden hover:translate-y-[-2px] ${i % 3 === 0 ? 'animate-float-slow' : 'animate-float-delayed'}`}
-            >
-              <div className="flex items-center gap-4 relative z-10">
-                <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <Icon className="size-5" />
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-card/50 p-6 sm:p-12 shadow-2xl backdrop-blur-md animate-float-delayed">
+          <div className="absolute inset-0 opacity-10 bg-gradient-to-bl from-primary via-transparent to-zinc-500 animate-pulse" />
+          <div className="relative z-10 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {gearItems.map(({ Icon, label, value }, i) => (
+              <div
+                key={label}
+                className={`relative bg-card/80 border border-border rounded-2xl p-7 hover:border-primary/50 transition-all group overflow-hidden hover:translate-y-[-2px] ${i % 3 === 0 ? 'animate-float-slow' : 'animate-float-delayed'}`}
+              >
+                <div className="flex items-center gap-4 relative z-10">
+                  <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <Icon className="size-5" />
+                  </div>
+                  <div className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">
+                    {label}
+                  </div>
                 </div>
-                <div className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">
-                  {label}
+                <div className="mt-5 font-sans font-bold text-lg sm:text-xl relative z-10 leading-tight">{value}</div>
+                
+                <div className="absolute top-0 right-0 p-6 opacity-[0.03] group-hover:opacity-[0.1] transition-all duration-500 rotate-12 group-hover:rotate-0 group-hover:scale-110">
+                  <Icon className="size-20 animate-pulse-subtle" />
                 </div>
               </div>
-              <div className="mt-5 font-sans font-bold text-lg sm:text-xl relative z-10 leading-tight">{value}</div>
-              
-              <div className="absolute top-0 right-0 p-6 opacity-[0.03] group-hover:opacity-[0.1] transition-all duration-500 rotate-12 group-hover:rotate-0 group-hover:scale-110">
-                <Icon className="size-20 animate-pulse-subtle" />
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </Section>
 
