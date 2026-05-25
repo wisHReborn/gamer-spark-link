@@ -122,10 +122,17 @@
   .animate-spin-slow { animation: spin 12s linear infinite; transform: translateZ(0); will-change: transform; }
   .animate-float-slow { animation: float-optimized 6s ease-in-out infinite; transform: translateZ(0); will-change: transform; }
   .animate-float-delayed { animation: float-optimized 5s ease-in-out 2s infinite; transform: translateZ(0); will-change: transform; }
+  .animate-float-text { animation: float-text 3.5s ease-in-out infinite alternate; transform: translateZ(0); will-change: transform; }
   .animate-pulse-subtle { animation: pulse-opacity-only 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; transform: translateZ(0); will-change: opacity; }
 }
 
 /* Animations */
+
+/* Gentle float for text and boxes */
+@keyframes float-text {
+  0%, 100% { transform: translateY(0) translateZ(0); }
+  50% { transform: translateY(-4px) translateZ(0); }
+}
 
 /* Optimized glow using scale and opacity instead of box-shadow recalculation */
 @keyframes pulse-glow-optimized {

@@ -27,7 +27,7 @@ const t = {
   th: {
     nav: { support: "สนับสนุน", links: "ช่องทาง", gear: "อุปกรณ์", community: "คอมมูนิตี้" },
     live: "LIVE",
-    bio: "นักรบดิจิทัล • สตรีมเมอร์ • คอนเทนต์เกม FPS / MMORPG",
+    bio: "ก้าวสู่ตำนานบทใหม่พร้อมรบทุกแมตช์ ทุกเซิร์ฟเวอร์: สตรีมเมอร์ตัวจริงที่อยู่เคียงข้างคุณในทุกสมรภูมิ",
     heroCta: "โดเนทเดี๋ยวนี้",
     secCta: "ดูลิงก์ทั้งหมด",
     supportTitle: "สนับสนุนช่อง",
@@ -87,14 +87,42 @@ function Index() {
   const [lang, setLang] = useState<Lang>("th");
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef<HTMLAudioElement>(null);
   const L = t[lang];
 
   useEffect(() => {
+    const attemptPlay = () => {
+      if (audioRef.current) {
+        audioRef.current.play()
+          .then(() => setIsPlaying(true))
+          .catch(() => {
+            // If failed, wait for first user interaction
+            const playOnInteraction = () => {
+              if (audioRef.current) {
+                audioRef.current.play()
+                  .then(() => {
+                    setIsPlaying(true);
+                    document.removeEventListener("mousedown", playOnInteraction);
+                    document.removeEventListener("keydown", playOnInteraction);
+                  });
+              }
+            };
+            document.addEventListener("mousedown", playOnInteraction);
+            document.addEventListener("keydown", playOnInteraction);
+          });
+      }
+    };
+
+    attemptPlay();
+
     const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      // Clean up listeners if still present
+      document.removeEventListener("mousedown", attemptPlay);
+    };
   }, []);
 
   const toggleMusic = () => {
@@ -137,6 +165,8 @@ function Index() {
         ref={audioRef}
         src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3"
         loop
+        autoPlay
+        playsInline
         preload="auto"
       />
 
@@ -248,12 +278,12 @@ function Index() {
             </span>
           </div>
 
-          <h1 className="mt-10 font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.9]">
+          <h1 className="mt-10 font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.9] animate-float-text">
             <span className="bg-gradient-primary bg-clip-text text-transparent text-glow-primary">
               PREEE REBORN
             </span>
           </h1>
-          <p className="mt-6 text-base sm:text-lg md:text-xl text-muted-foreground max-w-md mx-auto leading-relaxed font-medium">
+          <p className="mt-6 text-base sm:text-lg md:text-xl text-muted-foreground max-w-md mx-auto leading-relaxed font-medium animate-float-text" style={{ animationDelay: '0.2s' }}>
             {L.bio}
           </p>
 
@@ -278,13 +308,13 @@ function Index() {
       {/* SUPPORT */}
       <Section id="support" eyebrow="01" title={L.supportTitle} subtitle={L.supportSub} className="bg-theme-support relative">
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {donateOptions.map((d) => (
+          {donateOptions.map((d, i) => (
             <a
               key={d.name}
               href={d.url}
               target="_blank"
               rel="noreferrer"
-              className={`group relative overflow-hidden rounded-[1.5rem] p-8 border transition-all active:scale-95 ${
+              className={`group relative overflow-hidden rounded-[1.5rem] p-8 border transition-all active:scale-95 ${i % 2 === 0 ? 'animate-float-slow' : 'animate-float-delayed'} ${
                 d.featured
                   ? "bg-gradient-cta text-cta-foreground border-cta shadow-cta sm:col-span-2 lg:col-span-3"
                   : "bg-card border-border hover:border-primary/50"
@@ -301,7 +331,7 @@ function Index() {
                   </div>
                 </div>
                 <div className={`grid place-items-center size-14 sm:size-16 rounded-2xl ${d.featured ? "bg-white/20" : "bg-primary/10 text-primary"} group-hover:scale-110 transition-transform shadow-xl`}>
-                  <Heart className="size-8" fill="currentColor" />
+                  <Heart className="size-8 animate-pulse-subtle" fill="currentColor" />
                 </div>
               </div>
             </a>
@@ -312,13 +342,13 @@ function Index() {
       {/* LINKS */}
       <Section id="links" eyebrow="02" title={L.linksTitle} subtitle={L.linksSub} className="bg-theme-links relative">
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:gap-6">
-          {socials.map(({ name, handle, url, Icon, color }) => (
+          {socials.map(({ name, handle, url, Icon, color }, i) => (
             <a
               key={name}
               href={url}
               target="_blank"
               rel="noreferrer"
-              className="group flex items-center gap-5 bg-card border border-border hover:border-primary/50 rounded-2xl p-6 transition-all active:scale-[0.98] hover:shadow-2xl hover:translate-y-[-2px]"
+              className={`group flex items-center gap-5 bg-card border border-border hover:border-primary/50 rounded-2xl p-6 transition-all active:scale-[0.98] hover:shadow-2xl hover:translate-y-[-2px] ${i % 2 !== 0 ? 'animate-float-slow' : 'animate-float-delayed'}`}
             >
               <div
                 className="grid place-items-center size-16 rounded-2xl shrink-0 shadow-inner group-hover:scale-105 transition-transform"
@@ -341,10 +371,10 @@ function Index() {
       {/* GEAR */}
       <Section id="gear" eyebrow="03" title={L.gearTitle} subtitle={L.gearSub} className="bg-theme-gear relative">
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {gear.map(({ Icon, label, value }) => (
+          {gear.map(({ Icon, label, value }, i) => (
             <div
               key={label}
-              className="relative bg-card border border-border rounded-2xl p-7 hover:border-primary/50 transition-all group overflow-hidden hover:translate-y-[-2px]"
+              className={`relative bg-card border border-border rounded-2xl p-7 hover:border-primary/50 transition-all group overflow-hidden hover:translate-y-[-2px] ${i % 3 === 0 ? 'animate-float-slow' : 'animate-float-delayed'}`}
             >
               <div className="flex items-center gap-4 relative z-10">
                 <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
@@ -357,7 +387,7 @@ function Index() {
               <div className="mt-5 font-sans font-bold text-lg sm:text-xl relative z-10 leading-tight">{value}</div>
               
               <div className="absolute top-0 right-0 p-6 opacity-[0.03] group-hover:opacity-[0.1] transition-all duration-500 rotate-12 group-hover:rotate-0 group-hover:scale-110">
-                <Icon className="size-20" />
+                <Icon className="size-20 animate-pulse-subtle" />
               </div>
             </div>
           ))}
@@ -366,11 +396,11 @@ function Index() {
 
       {/* COMMUNITY */}
       <Section id="community" eyebrow="04" title={L.commTitle} subtitle={L.commSub} className="bg-theme-community relative">
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-card p-10 sm:p-20 text-center group shadow-2xl">
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-card p-10 sm:p-20 text-center group shadow-2xl animate-float-slow">
           <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-primary via-transparent to-cta animate-pulse" />
           <div className="relative z-10">
             <div className="inline-flex p-6 rounded-3xl bg-primary/10 text-primary mb-8 group-hover:scale-110 transition-transform duration-700 shadow-inner">
-              <Users className="size-12" />
+              <Users className="size-12 animate-pulse-subtle" />
             </div>
             <div className="font-display font-black text-3xl sm:text-5xl md:text-6xl tracking-tighter mb-6 uppercase">PREEE REBORN GUILD</div>
             <p className="mt-4 text-muted-foreground max-w-lg mx-auto font-medium text-base sm:text-lg md:text-xl leading-relaxed opacity-90 font-sans">
@@ -382,7 +412,7 @@ function Index() {
               href="https://discord.gg"
               target="_blank"
               rel="noreferrer"
-              className="mt-12 inline-flex items-center gap-4 bg-gradient-cta text-cta-foreground font-black px-12 py-5 rounded-2xl shadow-cta hover:scale-105 active:scale-95 transition-all text-lg font-sans"
+              className="mt-12 inline-flex items-center gap-4 bg-gradient-cta text-cta-foreground font-black px-12 py-5 rounded-2xl shadow-cta hover:scale-105 active:scale-95 transition-all text-lg font-sans animate-pulse-glow"
             >
               <MessageCircle className="size-7" />
               {L.joinDiscord}
@@ -391,9 +421,10 @@ function Index() {
         </div>
       </Section>
 
-      <footer className="border-t border-border mt-28 py-16 text-center text-sm text-muted-foreground bg-black/40 backdrop-blur-sm font-sans">
-        <div className="mx-auto max-w-6xl px-4 flex flex-col items-center">
-          <div className="font-display font-black text-primary text-3xl sm:text-4xl text-glow-primary tracking-tighter mb-6 uppercase">
+      <footer className="border-t border-border mt-28 py-16 text-center text-sm text-muted-foreground bg-black/40 backdrop-blur-sm font-sans relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-gradient-to-t from-primary/20 to-transparent pointer-events-none" />
+        <div className="mx-auto max-w-6xl px-4 flex flex-col items-center relative z-10">
+          <div className="font-display font-black text-primary text-3xl sm:text-4xl text-glow-primary tracking-tighter mb-6 uppercase animate-pulse-subtle">
             PREEE REBORN
           </div>
           <p className="max-w-4xl font-medium text-base sm:text-lg mb-8 leading-relaxed px-4 text-center mx-auto">
@@ -401,7 +432,7 @@ function Index() {
           </p>
           <div className="flex gap-6 mb-8">
             {socials.slice(0, 3).map(({ Icon, url, name }) => (
-              <a key={name} href={url} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+              <a key={name} href={url} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110">
                 <Icon className="size-6" />
               </a>
             ))}
@@ -421,11 +452,11 @@ function Section({
   id: string; eyebrow: string; title: string; subtitle: string; children: React.ReactNode; className?: string;
 }) {
   return (
-    <section id={id} className={`scroll-mt-20 py-20 sm:py-28 lg:py-32 ${className}`}>
+    <section id={id} className={`scroll-mt-20 py-20 sm:py-28 lg:py-32 overflow-hidden ${className}`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
-        <div className="mb-12 text-center max-w-2xl mx-auto">
+        <div className="mb-12 text-center max-w-2xl mx-auto animate-float-text">
           <div className="font-display text-[10px] font-black tracking-[0.4em] text-primary/80 uppercase mb-3">
-
+            // {eyebrow}
           </div>
           <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl tracking-tight mb-4">{title}</h2>
           <p className="text-muted-foreground font-medium sm:text-lg opacity-80 font-sans">{subtitle}</p>
