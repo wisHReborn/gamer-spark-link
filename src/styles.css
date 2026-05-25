@@ -95,7 +95,7 @@
   .shadow-glow { box-shadow: var(--shadow-glow); }
   .shadow-cta { box-shadow: var(--shadow-cta); }
   
-  /* Thematic Section Backgrounds */
+  /* Thematic Section Backgrounds - Static for performance */
   .bg-theme-support {
     background-image: radial-gradient(ellipse at center, oklch(0.72 0.19 50 / 0.05), transparent 70%);
   }
@@ -114,20 +114,46 @@
     position: absolute; inset: 0;
     background: repeating-linear-gradient(0deg, transparent 0, transparent 2px, oklch(1 0 0 / 0.02) 2px, oklch(1 0 0 / 0.02) 3px);
     pointer-events: none;
+    z-index: 1;
+    transform: translateZ(0); /* Hardware acceleration */
   }
+  
+  /* Optimized continuous animation classes using transform/opacity */
+  .animate-spin-slow { animation: spin 12s linear infinite; transform: translateZ(0); will-change: transform; }
+  .animate-float-slow { animation: float-optimized 6s ease-in-out infinite; transform: translateZ(0); will-change: transform; }
+  .animate-float-delayed { animation: float-optimized 5s ease-in-out 2s infinite; transform: translateZ(0); will-change: transform; }
+  .animate-pulse-subtle { animation: pulse-opacity-only 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; transform: translateZ(0); will-change: opacity; }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px oklch(0.62 0.22 255 / 0.4), 0 0 40px oklch(0.62 0.22 255 / 0.2); }
-  50% { box-shadow: 0 0 30px oklch(0.62 0.22 255 / 0.7), 0 0 60px oklch(0.62 0.22 255 / 0.4); }
-}
-.animate-pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+/* Animations */
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+/* Optimized glow using scale and opacity instead of box-shadow recalculation */
+@keyframes pulse-glow-optimized {
+  0%, 100% { opacity: 0.85; transform: scale(1) translateZ(0); }
+  50% { opacity: 1; transform: scale(1.02) translateZ(0); }
 }
-.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-pulse-glow { 
+  animation: pulse-glow-optimized 3s ease-in-out infinite; 
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* Pure opacity pulse for icons (very cheap to render) */
+@keyframes pulse-opacity-only {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Subtle, performant float */
+@keyframes float-optimized {
+  0%, 100% { transform: translateY(0) translateZ(0); }
+  50% { transform: translateY(-4px) translateZ(0); } /* Reduced travel distance */
+}
+.animate-float { 
+  animation: float-optimized 4s ease-in-out infinite; 
+  transform: translateZ(0);
+  will-change: transform;
+}
 
 @keyframes slide-up {
   from { opacity: 0; transform: translateY(20px); }

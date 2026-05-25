@@ -5,7 +5,7 @@ import {
   Music2, Cpu, MonitorPlay, Keyboard, Mouse, Headphones,
   Users, Menu, X, Zap, Languages,
 } from "lucide-react";
-import avatar from "@/assets/avatar.jpg";
+import profile from "@/assets/profile.png";
 import heroBg from "@/assets/hero-bg.jpg";
 
 export const Route = createFileRoute("/")({
@@ -26,7 +26,7 @@ type Lang = "th" | "en";
 const t = {
   th: {
     nav: { support: "สนับสนุน", links: "ลิงก์", gear: "อุปกรณ์", community: "คอมมูนิตี้" },
-    live: "กำลังไลฟ์",
+    live: "LIVE",
     bio: "นักรบดิจิทัล • สตรีมเมอร์ • คอนเทนต์เกม FPS / MMORPG",
     heroCta: "โดเนทเดี๋ยวนี้",
     secCta: "ดูลิงก์ทั้งหมด",
@@ -43,7 +43,7 @@ const t = {
   },
   en: {
     nav: { support: "Support", links: "Links", gear: "Gear", community: "Community" },
-    live: "LIVE NOW",
+    live: "LIVE",
     bio: "Digital warrior • Streamer • FPS / MMORPG content creator",
     heroCta: "Donate Now",
     secCta: "View All Links",
@@ -201,8 +201,8 @@ function Index() {
             <div className="absolute -inset-4 rounded-full bg-gradient-primary blur-3xl opacity-30" />
             <div className="relative p-1 rounded-full bg-gradient-primary shadow-glow">
               <img
-                src={avatar}
-                alt="Preee Reborn avatar"
+                src={profile}
+                alt="Preee Reborn profile picture"
                 width={160}
                 height={160}
                 className="size-28 sm:size-36 md:size-44 rounded-full object-cover border-4 border-background"
@@ -391,7 +391,7 @@ function Section({
       <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
         <div className="mb-12 text-center max-w-2xl mx-auto">
           <div className="font-display text-[10px] font-black tracking-[0.4em] text-primary/80 uppercase mb-3">
-            // {eyebrow}
+
           </div>
           <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl tracking-tight mb-4">{title}</h2>
           <p className="text-muted-foreground font-medium sm:text-lg opacity-80 font-sans">{subtitle}</p>
