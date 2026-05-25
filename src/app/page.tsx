@@ -149,7 +149,7 @@ export default function Index() {
     if (element) {
       element.scrollIntoView({
         behavior: "smooth",
-        block: "start"
+        block: "center"
       });
     }
     setMenuOpen(false);
@@ -321,24 +321,24 @@ export default function Index() {
               href="https://ezdn.app/preee_reborn"
               target="_blank"
               rel="noreferrer"
-              className="group relative overflow-hidden rounded-2xl p-8 sm:py-5 bg-gradient-cta text-cta-foreground border-2 border-white/100 shadow-cta transition-all active:scale-95 flex flex-col sm:flex-row items-center justify-between gap-6 animate-pulse-glow"
+              className="group relative overflow-hidden rounded-2xl p-4 sm:p-8 bg-gradient-cta text-cta-foreground border-2 border-white/100 shadow-cta transition-all active:scale-95 flex flex-row items-center justify-between gap-4 animate-pulse-glow"
             >
-              <div className="text-center sm:text-left ">
-                <div className="text-[10px] font-black uppercase tracking-[0.3em] mb-3 opacity-80 flex items-center gap-2 justify-center sm:justify-start">
-                  <Zap className="size-3.5 fill-current" />
+              <div className="text-left flex-1">
+                <div className="text-[10px] font-black uppercase tracking-[0.2em] mb-1 sm:mb-3 opacity-80 flex items-center gap-2">
+                  <Zap className="size-3 sm:size-3.5 fill-current" />
                   Ultimate Support
                 </div>
-                <div className="font-display text-4xl sm:text-5xl font-black tracking-tighter group-hover:scale-[1.02] transition-transform duration-500">
+                <div className="font-display text-2xl sm:text-5xl font-black tracking-tighter group-hover:scale-[1.02] transition-transform duration-500">
                   easydonate
                 </div>
-                <p className="text-base sm:text-lg mt-4 font-medium opacity-90 leading-relaxed">
+                <p className="text-xs sm:text-lg mt-1 sm:mt-4 font-medium opacity-90 leading-tight">
                   {lang === "th" 
                     ? "สนับสนุนผ่าน PromptPay / TrueMoney / Credit Card"
                     : "Support via PromptPay / TrueMoney / Credit Card"}
                 </p>
               </div>
-              <div className="grid place-items-center size-20 sm:size-24 rounded-2xl bg-white/20 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 shadow-2xl shrink-0 ">
-                <Image src={profile} alt="easydonate" className="size-full rounded-2xl border-2 border-white/100 animate-pulse-subtle" />
+              <div className="grid place-items-center size-14 sm:size-24 rounded-xl sm:rounded-2xl bg-white/20 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 shadow-xl sm:shadow-2xl shrink-0">
+                <Image src={profile} alt="easydonate" className="size-full rounded-xl sm:rounded-2xl border-2 border-white/100 animate-pulse-subtle" />
               </div>
             </a>
 
