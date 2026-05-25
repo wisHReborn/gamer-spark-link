@@ -297,7 +297,7 @@ export default function Index() {
         <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-card/50 p-6 sm:p-10 md:p-14 shadow-2xl backdrop-blur-md animate-float">
           <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-primary via-transparent to-orange-400 animate-pulse" />
           
-          <div className="relative z-10 max-w-3xl mx-auto">
+          <div className="relative z-10 max-w-3xl mx-auto ">
             {/* Decorative Header */}
             <div className="text-center mb-10 animate-slide-up">
               <h3 className="font-display text-xl sm:text-3xl font-black tracking-tight mb-4 bg-gradient-to-r from-primary to-orange-300 bg-clip-text text-transparent">
@@ -310,9 +310,9 @@ export default function Index() {
               href="https://easydonate.app/PREEEREBORN"
               target="_blank"
               rel="noreferrer"
-              className="group relative overflow-hidden rounded-[2rem] p-8 bg-gradient-cta text-cta-foreground border-cta shadow-cta transition-all active:scale-95 flex flex-col sm:flex-row items-center justify-between gap-6 animate-pulse-glow"
+              className="group relative overflow-hidden rounded-2xl p-8 sm:py-5 bg-gradient-cta text-cta-foreground border-2 border-white/100 shadow-cta transition-all active:scale-95 flex flex-col sm:flex-row items-center justify-between gap-6 animate-pulse-glow"
             >
-              <div className="text-center sm:text-left">
+              <div className="text-center sm:text-left ">
                 <div className="text-[10px] font-black uppercase tracking-[0.3em] mb-3 opacity-80 flex items-center gap-2 justify-center sm:justify-start">
                   <Zap className="size-3.5 fill-current" />
                   Ultimate Support
@@ -326,8 +326,8 @@ export default function Index() {
                     : "Support via PromptPay / TrueMoney / Credit Card"}
                 </p>
               </div>
-              <div className="grid place-items-center size-20 sm:size-24 rounded-2xl bg-white/20 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 shadow-2xl shrink-0">
-                <Heart className="size-10 sm:size-12 animate-pulse-subtle" fill="currentColor" />
+              <div className="grid place-items-center size-20 sm:size-24 rounded-2xl bg-white/20 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 shadow-2xl shrink-0 ">
+                <Image src={profile} alt="easydonate" className="size-full rounded-2xl border-2 border-white/100 animate-pulse-subtle" />
               </div>
             </a>
 
