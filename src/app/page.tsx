@@ -71,10 +71,10 @@ const donateOptions = [
 ];
 
 const socials = [
-  { name: "Instagram", handle: "@preeereborn", url: "https://instagram.com/preeereborn", Icon: Instagram, color: "oklch(0.6 0.2 340)" },
-  { name: "YouTube", handle: "PREEE REBORN Gaming", url: "https://youtube.com", Icon: Youtube, color: "oklch(0.62 0.24 27)" },
-  { name: "Facebook", handle: "PREEE REBORN Page", url: "https://facebook.com", Icon: Facebook, color: "oklch(0.55 0.18 255)" },
-  { name: "TikTok", handle: "@preeereborn.tk", url: "https://tiktok.com", Icon: Music2, color: "oklch(0.97 0.01 80)" },
+  { name: "Instagram", handle: "@reb0rn_606", url: "https://www.instagram.com/reb0rn_606/", Icon: Instagram, color: "oklch(0.6 0.2 340)" },
+  { name: "YouTube", handle: "K9Q FF", url: "https://www.youtube.com/@k9qff106", Icon: Youtube, color: "oklch(0.62 0.24 27)" },
+  { name: "Facebook", handle: "WisHreborn Zx", url: "https://www.facebook.com/wishreborn.zx?locale=th_TH", Icon: Facebook, color: "oklch(0.55 0.18 255)" },
+  { name: "TikTok", handle: "!sReborn", url: "https://www.tiktok.com/@sreborn6", Icon: Music2, color: "oklch(0.97 0.01 80)" },
   { name: "Discord", handle: "Neon Family", url: "https://discord.gg/uT4uDkmZb9", Icon: DiscordIcon, color: "oklch(0.6 0.18 270)" },
 ];
 
