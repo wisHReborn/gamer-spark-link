@@ -75,7 +75,7 @@ const socials = [
   { name: "YouTube", handle: "PREEE REBORN Gaming", url: "https://youtube.com", Icon: Youtube, color: "oklch(0.62 0.24 27)" },
   { name: "Facebook", handle: "PREEE REBORN Page", url: "https://facebook.com", Icon: Facebook, color: "oklch(0.55 0.18 255)" },
   { name: "TikTok", handle: "@preeereborn.tk", url: "https://tiktok.com", Icon: Music2, color: "oklch(0.97 0.01 80)" },
-  { name: "Discord", handle: "PREEE REBORN Guild", url: "https://discord.gg", Icon: DiscordIcon, color: "oklch(0.6 0.18 270)" },
+  { name: "Discord", handle: "Neon Family", url: "https://discord.gg/uT4uDkmZb9", Icon: DiscordIcon, color: "oklch(0.6 0.18 270)" },
 ];
 
 const gearItems = [
@@ -418,7 +418,7 @@ export default function Index() {
             <div className="inline-flex p-6 rounded-3xl bg-primary/10 text-primary mb-8 group-hover:scale-110 transition-transform duration-700 shadow-inner">
               <Gamepad2 className="size-12 animate-pulse-subtle" />
             </div>
-            <div className="font-display font-black text-3xl sm:text-5xl md:text-6xl tracking-tighter mb-6 uppercase">PREEE REBORN Guild</div>
+            <div className="font-display font-black text-3xl sm:text-5xl md:text-6xl tracking-tighter mb-6 uppercase">Neon Family Guild</div>
             <p className="mt-4 text-muted-foreground max-w-lg mx-auto font-medium text-base sm:text-lg md:text-xl leading-relaxed opacity-90 font-sans">
               {lang === "th"
                 ? "พบกับเพื่อนเกมเมอร์มากมาย, จัดปาร์ตี้เล่นเกม, และแชร์เคล็ดลับเกมด้วยกัน"
