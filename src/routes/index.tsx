@@ -242,7 +242,7 @@ function Index() {
       </section>
 
       {/* SUPPORT */}
-      <Section id="support" eyebrow="01" title={L.supportTitle} subtitle={L.supportSub}>
+      <Section id="support" eyebrow="01" title={L.supportTitle} subtitle={L.supportSub} className="bg-theme-support relative">
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {donateOptions.map((d) => (
             <a
@@ -276,7 +276,7 @@ function Index() {
       </Section>
 
       {/* LINKS */}
-      <Section id="links" eyebrow="02" title={L.linksTitle} subtitle={L.linksSub}>
+      <Section id="links" eyebrow="02" title={L.linksTitle} subtitle={L.linksSub} className="bg-theme-links relative">
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:gap-6">
           {socials.map(({ name, handle, url, Icon, color }) => (
             <a
@@ -305,7 +305,7 @@ function Index() {
       </Section>
 
       {/* GEAR */}
-      <Section id="gear" eyebrow="03" title={L.gearTitle} subtitle={L.gearSub}>
+      <Section id="gear" eyebrow="03" title={L.gearTitle} subtitle={L.gearSub} className="bg-theme-gear relative">
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {gear.map(({ Icon, label, value }) => (
             <div
@@ -331,7 +331,7 @@ function Index() {
       </Section>
 
       {/* COMMUNITY */}
-      <Section id="community" eyebrow="04" title={L.commTitle} subtitle={L.commSub}>
+      <Section id="community" eyebrow="04" title={L.commTitle} subtitle={L.commSub} className="bg-theme-community relative">
         <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-card p-10 sm:p-20 text-center group shadow-2xl">
           <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-primary via-transparent to-cta animate-pulse" />
           <div className="relative z-10">
@@ -382,16 +382,16 @@ function Index() {
 }
 
 function Section({
-  id, eyebrow, title, subtitle, children,
+  id, eyebrow, title, subtitle, children, className = "",
 }: {
-  id: string; eyebrow: string; title: string; subtitle: string; children: React.ReactNode;
+  id: string; eyebrow: string; title: string; subtitle: string; children: React.ReactNode; className?: string;
 }) {
   return (
-    <section id={id} className="scroll-mt-20 py-20 sm:py-28 lg:py-32">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section id={id} className={`scroll-mt-20 py-20 sm:py-28 lg:py-32 ${className}`}>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
         <div className="mb-12 text-center max-w-2xl mx-auto">
           <div className="font-display text-[10px] font-black tracking-[0.4em] text-primary/80 uppercase mb-3">
-            
+            // {eyebrow}
           </div>
           <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl tracking-tight mb-4">{title}</h2>
           <p className="text-muted-foreground font-medium sm:text-lg opacity-80 font-sans">{subtitle}</p>

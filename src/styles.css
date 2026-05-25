@@ -94,6 +94,21 @@
   .bg-gradient-cta { background-image: var(--gradient-cta); }
   .shadow-glow { box-shadow: var(--shadow-glow); }
   .shadow-cta { box-shadow: var(--shadow-cta); }
+  
+  /* Thematic Section Backgrounds */
+  .bg-theme-support {
+    background-image: radial-gradient(ellipse at center, oklch(0.72 0.19 50 / 0.05), transparent 70%);
+  }
+  .bg-theme-links {
+    background-image: radial-gradient(circle at right center, oklch(0.62 0.22 255 / 0.05), transparent 60%);
+  }
+  .bg-theme-gear {
+    background-image: radial-gradient(circle at left bottom, oklch(0.72 0.19 50 / 0.06), transparent 70%);
+  }
+  .bg-theme-community {
+    background-image: radial-gradient(ellipse at top, oklch(0.62 0.22 255 / 0.08), transparent 80%);
+  }
+
   .scanlines::before {
     content: '';
     position: absolute; inset: 0;
