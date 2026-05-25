@@ -52,9 +52,7 @@ const t = {
 };
 
 const donateOptions = [
-  { name: "TipMe", desc: "PromptPay / Truemoney", url: "https://tipme.in.th", featured: true },
-  { name: "Streamlabs", desc: "Credit Card / PayPal", url: "https://streamlabs.com" },
-  { name: "PromptPay", desc: "สแกน QR ตรง", url: "#" },
+  { name: "easydonate", desc: "ทุกช่องทาง PromptPay / TrueMoney / Credit Card", url: "https://easydonate.app", featured: true },
 ];
 
 const socials = [
@@ -296,35 +294,28 @@ export default function Index() {
 
       {/* SUPPORT */}
       <Section id="support" eyebrow="01" title={L.supportTitle} subtitle={L.supportSub} className="bg-theme-support relative">
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {donateOptions.map((d, i) => (
-            <a
-              key={d.name}
-              href={d.url}
-              target="_blank"
-              rel="noreferrer"
-              className={`group relative overflow-hidden rounded-[1.5rem] p-8 border transition-all active:scale-95 ${i % 2 === 0 ? 'animate-float-slow' : 'animate-float-delayed'} ${
-                d.featured
-                  ? "bg-gradient-cta text-cta-foreground border-cta shadow-cta sm:col-span-2 lg:col-span-3"
-                  : "bg-card border-border hover:border-primary/50"
-              }`}
-            >
-              <div className="flex items-center justify-between gap-6">
-                <div className="flex-1">
-                  <div className={`text-[10px] font-black uppercase tracking-[0.3em] mb-2 ${d.featured ? "opacity-70" : "text-primary"}`}>
-                    {d.featured ? "★ Recommended" : "Tip Jar"}
-                  </div>
-                  <div className="font-display text-2xl sm:text-3xl font-black tracking-tight">{d.name}</div>
-                  <div className={`text-sm sm:text-base mt-2 font-medium ${d.featured ? "opacity-90" : "text-muted-foreground"}`}>
-                    {d.desc}
-                  </div>
-                </div>
-                <div className={`grid place-items-center size-14 sm:size-16 rounded-2xl ${d.featured ? "bg-white/20" : "bg-primary/10 text-primary"} group-hover:scale-110 transition-transform shadow-xl`}>
-                  <Heart className="size-8 animate-pulse-subtle" fill="currentColor" />
-                </div>
+        <div className="max-w-3xl mx-auto">
+          <a
+            href="https://easydonate.app/PREEEREBORN"
+            target="_blank"
+            rel="noreferrer"
+            className="group relative overflow-hidden rounded-[2rem] p-10 bg-gradient-cta text-cta-foreground border-cta shadow-cta transition-all active:scale-95 flex flex-col sm:flex-row items-center justify-between gap-8 animate-pulse-glow"
+          >
+            <div className="text-center sm:text-left">
+              <div className="text-[12px] font-black uppercase tracking-[0.4em] mb-3 opacity-80">
+                ★ Ultimate Support
               </div>
-            </a>
-          ))}
+              <div className="font-display text-4xl sm:text-5xl font-black tracking-tighter">
+                easydonate
+              </div>
+              <p className="text-lg mt-4 font-medium opacity-90">
+                รองรับทุกช่องทาง PromptPay / TrueMoney / Credit Card
+              </p>
+            </div>
+            <div className="grid place-items-center size-20 sm:size-24 rounded-3xl bg-white/20 group-hover:scale-110 transition-transform shadow-2xl shrink-0">
+              <Heart className="size-10 sm:size-12 animate-pulse-subtle" fill="currentColor" />
+            </div>
+          </a>
         </div>
       </Section>
 
@@ -391,14 +382,14 @@ export default function Index() {
             <div className="inline-flex p-6 rounded-3xl bg-primary/10 text-primary mb-8 group-hover:scale-110 transition-transform duration-700 shadow-inner">
               <Users className="size-12 animate-pulse-subtle" />
             </div>
-            <div className="font-display font-black text-3xl sm:text-5xl md:text-6xl tracking-tighter mb-6 uppercase">Neon Family Guild</div>
+            <div className="font-display font-black text-3xl sm:text-5xl md:text-6xl tracking-tighter mb-6 uppercase">PREEE REBORN Guild</div>
             <p className="mt-4 text-muted-foreground max-w-lg mx-auto font-medium text-base sm:text-lg md:text-xl leading-relaxed opacity-90 font-sans">
               {lang === "th"
                 ? "พบกับเพื่อนเกมเมอร์มากมาย, จัดปาร์ตี้เล่นเกม, และแชร์เคล็ดลับเกมด้วยกัน"
                 : "Meet up with lots of fellow gamers, throw gaming parties, and share gaming tips together."}
             </p>
             <a
-              href="https://discord.gg/uT4uDkmZb9"
+              href="https://discord.gg"
               target="_blank"
               rel="noreferrer"
               className="mt-12 inline-flex items-center gap-4 bg-gradient-cta text-cta-foreground font-black px-12 py-5 rounded-2xl shadow-cta hover:scale-105 active:scale-95 transition-all text-lg font-sans animate-pulse-glow"
