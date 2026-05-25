@@ -192,7 +192,7 @@ export default function Index() {
             <span className="text-glow-primary tracking-tight uppercase">PREEE REBORN</span>
           </button>
 
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-1 ml-auto mr-4">
             {navItems.map((n) => (
               <button
                 key={n.id}
@@ -425,7 +425,7 @@ export default function Index() {
                 : "Meet up with lots of fellow gamers, throw gaming parties, and share gaming tips together."}
             </p>
             <a
-              href="https://discord.gg"
+              href="https://discord.gg/uT4uDkmZb9"
               target="_blank"
               rel="noreferrer"
               className="mt-12 inline-flex items-center gap-4 bg-gradient-cta text-cta-foreground font-black px-12 py-5 rounded-2xl shadow-cta hover:scale-105 active:scale-95 transition-all text-lg font-sans animate-pulse-glow"
