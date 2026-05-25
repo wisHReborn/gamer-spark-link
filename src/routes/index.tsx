@@ -409,7 +409,7 @@ function Index() {
                 : "Meet up with lots of fellow gamers, throw gaming parties, and share gaming tips together."}
             </p>
             <a
-              href="https://discord.gg"
+              href="https://discord.gg/uT4uDkmZb9"
               target="_blank"
               rel="noreferrer"
               className="mt-12 inline-flex items-center gap-4 bg-gradient-cta text-cta-foreground font-black px-12 py-5 rounded-2xl shadow-cta hover:scale-105 active:scale-95 transition-all text-lg font-sans animate-pulse-glow"
@@ -456,7 +456,7 @@ function Section({
       <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
         <div className="mb-12 text-center max-w-2xl mx-auto animate-float-text">
           <div className="font-display text-[10px] font-black tracking-[0.4em] text-primary/80 uppercase mb-3">
-            // {eyebrow}
+
           </div>
           <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl tracking-tight mb-4">{title}</h2>
           <p className="text-muted-foreground font-medium sm:text-lg opacity-80 font-sans">{subtitle}</p>

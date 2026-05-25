@@ -1,0 +1,168 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-cta: var(--cta);
+  --color-cta-foreground: var(--cta-foreground);
+  /* Font families will be handled via CSS variables from next/font */
+  --font-display: var(--font-orbitron);
+  --font-sans: var(--font-kanit);
+}
+
+:root {
+  --radius: 0.75rem;
+  /* Dark gamer theme — orange primary, electric blue CTA */
+  --background: oklch(0.16 0.015 60);
+  --foreground: oklch(0.97 0.01 80);
+  --card: oklch(0.21 0.02 60);
+  --card-foreground: oklch(0.97 0.01 80);
+  --popover: oklch(0.21 0.02 60);
+  --popover-foreground: oklch(0.97 0.01 80);
+  --primary: oklch(0.72 0.19 50);
+  --primary-foreground: oklch(0.15 0.02 60);
+  --primary-glow: oklch(0.78 0.22 55);
+  --secondary: oklch(0.26 0.025 60);
+  --secondary-foreground: oklch(0.97 0.01 80);
+  --muted: oklch(0.24 0.02 60);
+  --muted-foreground: oklch(0.7 0.03 70);
+  --accent: oklch(0.72 0.19 50);
+  --accent-foreground: oklch(0.15 0.02 60);
+  --destructive: oklch(0.62 0.24 27);
+  --destructive-foreground: oklch(0.98 0.01 80);
+  --border: oklch(0.3 0.03 60);
+  --input: oklch(0.26 0.025 60);
+  --ring: oklch(0.72 0.19 50);
+  --cta: oklch(0.62 0.22 255);
+  --cta-foreground: oklch(0.98 0.01 250);
+  --cta-glow: oklch(0.7 0.24 250);
+
+  --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
+  --gradient-cta: linear-gradient(135deg, var(--cta), var(--cta-glow));
+  --gradient-hero: radial-gradient(ellipse at top, oklch(0.32 0.12 50 / 0.45), transparent 60%);
+  --shadow-glow: 0 0 40px oklch(0.72 0.19 50 / 0.5);
+  --shadow-cta: 0 0 30px oklch(0.62 0.22 255 / 0.55);
+}
+
+.dark {
+  --background: oklch(0.16 0.015 60);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    /* Static background for performance */
+    background-image:
+      radial-gradient(circle at 20% 0%, oklch(0.32 0.14 50 / 0.18), transparent 50%),
+      radial-gradient(circle at 80% 100%, oklch(0.28 0.12 260 / 0.15), transparent 50%);
+    background-attachment: fixed;
+  }
+  .font-display { font-family: var(--font-display); letter-spacing: 0.02em; }
+}
+
+@layer utilities {
+  .text-glow-primary { text-shadow: 0 0 24px oklch(0.72 0.19 50 / 0.6); }
+  .bg-gradient-primary { background-image: var(--gradient-primary); }
+  .bg-gradient-cta { background-image: var(--gradient-cta); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-cta { box-shadow: var(--shadow-cta); }
+  
+  /* Thematic Section Backgrounds - Static for performance */
+  .bg-theme-support {
+    background-image: radial-gradient(ellipse at center, oklch(0.72 0.19 50 / 0.05), transparent 70%);
+  }
+  .bg-theme-links {
+    background-image: radial-gradient(circle at right center, oklch(0.62 0.22 255 / 0.05), transparent 60%);
+  }
+  .bg-theme-gear {
+    background-image: radial-gradient(circle at left bottom, oklch(0.72 0.19 50 / 0.06), transparent 70%);
+  }
+  .bg-theme-community {
+    background-image: radial-gradient(ellipse at top, oklch(0.62 0.22 255 / 0.08), transparent 80%);
+  }
+
+  .scanlines::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent 0, transparent 2px, oklch(1 0 0 / 0.02) 2px, oklch(1 0 0 / 0.02) 3px);
+    pointer-events: none;
+    z-index: 1;
+    transform: translateZ(0); /* Hardware acceleration */
+  }
+  
+  /* Optimized continuous animation classes using transform/opacity */
+  .animate-spin-slow { animation: spin 12s linear infinite; transform: translateZ(0); will-change: transform; }
+  .animate-float-slow { animation: float-optimized 6s ease-in-out infinite; transform: translateZ(0); will-change: transform; }
+  .animate-float-delayed { animation: float-optimized 5s ease-in-out 2s infinite; transform: translateZ(0); will-change: transform; }
+  .animate-float-text { animation: float-text 3.5s ease-in-out infinite alternate; transform: translateZ(0); will-change: transform; }
+  .animate-pulse-subtle { animation: pulse-opacity-only 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; transform: translateZ(0); will-change: opacity; }
+}
+
+/* Animations */
+
+/* Gentle float for text and boxes */
+@keyframes float-text {
+  0%, 100% { transform: translateY(0) translateZ(0); }
+  50% { transform: translateY(-4px) translateZ(0); }
+}
+
+/* Optimized glow using scale and opacity instead of box-shadow recalculation */
+@keyframes pulse-glow-optimized {
+  0%, 100% { opacity: 0.85; transform: scale(1) translateZ(0); }
+  50% { opacity: 1; transform: scale(1.02) translateZ(0); }
+}
+.animate-pulse-glow { 
+  animation: pulse-glow-optimized 3s ease-in-out infinite; 
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* Pure opacity pulse for icons (very cheap to render) */
+@keyframes pulse-opacity-only {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Subtle, performant float */
+@keyframes float-optimized {
+  0%, 100% { transform: translateY(0) translateZ(0); }
+  50% { transform: translateY(-4px) translateZ(0); } /* Reduced travel distance */
+}
+.animate-float { 
+  animation: float-optimized 4s ease-in-out infinite; 
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up { animation: slide-up 0.7s ease-out both; }
