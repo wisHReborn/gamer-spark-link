@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import {
-  Heart, Twitch, Youtube, Facebook, MessageCircle,
+  Heart, Instagram, Youtube, Facebook, MessageCircle,
   Music2, Cpu, MonitorPlay, Keyboard, Mouse, Headphones,
   Users, Menu, X, Zap, Languages,
 } from "lucide-react";
@@ -39,7 +39,7 @@ const t = {
     commTitle: "เข้าร่วมคอมมูนิตี้",
     commSub: "เพื่อนๆกำลังรออยู่ เข้ามาเป็นแก๊งเดียวกันเถอะ!",
     joinDiscord: "เข้าร่วม Discord",
-    footer: "สร้างด้วย ❤️ สำหรับเกมเมอร์ทุกคน",
+    footer: "สร้างสรรค์ด้วย ❤️ เพื่อเป็นศูนย์รวมสุดยอดสตรีมเมอร์และคอมมูนิตี้เกมเมอร์ที่ยิ่งใหญ่ ร่วมยกระดับประสบการณ์การเล่นเกมไปพร้อมกับเรา",
   },
   en: {
     nav: { support: "Support", links: "Links", gear: "Gear", community: "Community" },
@@ -56,7 +56,7 @@ const t = {
     commTitle: "Join the Community",
     commSub: "Our guild is waiting. Let's raid together!",
     joinDiscord: "Join Discord",
-    footer: "Built with ❤️ for gamers everywhere",
+    footer: "Crafted with ❤️ as the ultimate hub for streamers and the entire gaming community. Level up your journey with us.",
   },
 };
 
@@ -67,7 +67,7 @@ const donateOptions = [
 ];
 
 const socials = [
-  { name: "Twitch", handle: "@preeereborn_live", url: "https://twitch.tv", Icon: Twitch, color: "oklch(0.55 0.22 295)" },
+  { name: "Instagram", handle: "@preeereborn", url: "https://instagram.com/preeereborn", Icon: Instagram, color: "oklch(0.6 0.2 340)" },
   { name: "YouTube", handle: "PREEE REBORN Gaming", url: "https://youtube.com", Icon: Youtube, color: "oklch(0.62 0.24 27)" },
   { name: "Facebook", handle: "PREEE REBORN Page", url: "https://facebook.com", Icon: Facebook, color: "oklch(0.55 0.18 255)" },
   { name: "TikTok", handle: "@preeereborn.tk", url: "https://tiktok.com", Icon: Music2, color: "oklch(0.97 0.01 80)" },
@@ -362,7 +362,9 @@ function Index() {
           <div className="font-display font-black text-primary text-3xl sm:text-4xl text-glow-primary tracking-tighter mb-6 uppercase">
             PREEE REBORN
           </div>
-          <p className="max-w-xs font-medium text-base sm:text-lg mb-8">{L.footer}</p>
+          <p className="max-w-4xl font-medium text-base sm:text-lg mb-8 leading-relaxed px-4 text-center mx-auto">
+            {L.footer}
+          </p>
           <div className="flex gap-6 mb-8">
             {socials.slice(0, 3).map(({ Icon, url, name }) => (
               <a key={name} href={url} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
@@ -389,7 +391,7 @@ function Section({
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mb-12 text-center max-w-2xl mx-auto">
           <div className="font-display text-[10px] font-black tracking-[0.4em] text-primary/80 uppercase mb-3">
-            // {eyebrow}
+            
           </div>
           <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl tracking-tight mb-4">{title}</h2>
           <p className="text-muted-foreground font-medium sm:text-lg opacity-80 font-sans">{subtitle}</p>
