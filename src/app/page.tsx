@@ -5,7 +5,8 @@ import Image from "next/image";
 import {
   Heart, Instagram, Youtube, Facebook, MessageCircle,
   Music2, Cpu, MonitorPlay, Keyboard, Mouse, Headphones,
-  Users, Menu, X, Zap, Languages, Volume2, VolumeX, MemoryStick
+  Users, Menu, X, Zap, Languages, Volume2, VolumeX, MemoryStick,
+  Gamepad2
 } from "lucide-react";
 
 // Using local images with Next.js static imports
@@ -146,13 +147,9 @@ export default function Index() {
   const scrollTo = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const elementRect = element.getBoundingClientRect();
-      const absoluteElementTop = elementRect.top + window.scrollY;
-      const middle = absoluteElementTop - (window.innerHeight / 2) + (elementRect.height / 2);
-
-      window.scrollTo({
-        top: middle,
-        behavior: "smooth"
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
       });
     }
     setMenuOpen(false);
@@ -419,7 +416,7 @@ export default function Index() {
           <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-primary via-transparent to-cta animate-pulse" />
           <div className="relative z-10">
             <div className="inline-flex p-6 rounded-3xl bg-primary/10 text-primary mb-8 group-hover:scale-110 transition-transform duration-700 shadow-inner">
-              <Users className="size-12 animate-pulse-subtle" />
+              <Gamepad2 className="size-12 animate-pulse-subtle" />
             </div>
             <div className="font-display font-black text-3xl sm:text-5xl md:text-6xl tracking-tighter mb-6 uppercase">PREEE REBORN Guild</div>
             <p className="mt-4 text-muted-foreground max-w-lg mx-auto font-medium text-base sm:text-lg md:text-xl leading-relaxed opacity-90 font-sans">
